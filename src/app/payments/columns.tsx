@@ -17,7 +17,7 @@ import { ArrowUpDown, MoreHorizontal } from "lucide-react";
 export type Payment = {
   id: string;
   amount: number;
-  username: string;
+  fullName: string;
   email: string;
   status: "pending" | "processing" | "success" | "failed";
 };
@@ -42,7 +42,7 @@ export const columns: ColumnDef<Payment>[] = [
     ),
   },
   {
-    accessorKey: "username",
+    accessorKey: "fullName",
     header: "User",
   },
   {
