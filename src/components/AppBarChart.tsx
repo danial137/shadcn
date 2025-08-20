@@ -8,7 +8,7 @@ const chartConfig = {
     color: "var(--chart-1)",
   },
   successful: {
-    label: "Successful ",
+    label: "Successful",
     color: "var(--chart-4)",
   },
 } satisfies ChartConfig;

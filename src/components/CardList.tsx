@@ -75,42 +75,6 @@ const popularProducts = [
       black: "/products/5bl.png",
     },
   },
-  {
-    id: 6,
-    name: "Nike Air Max 270",
-    shortDescription:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-    description:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-    price: 59.9,
-    sizes: ["40", "42", "43", "44"],
-    colors: ["gray", "white"],
-    images: { gray: "/products/6g.png", white: "/products/6w.png" },
-  },
-  {
-    id: 7,
-    name: "Nike Ultraboost Pulse ",
-    shortDescription:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-    description:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-    price: 69.9,
-    sizes: ["40", "42", "43"],
-    colors: ["gray", "pink"],
-    images: { gray: "/products/7g.png", pink: "/products/7p.png" },
-  },
-  {
-    id: 8,
-    name: "Levi’s Classic Denim",
-    shortDescription:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-    description:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-    price: 59.9,
-    sizes: ["s", "m", "l"],
-    colors: ["blue", "green"],
-    images: { blue: "/products/8b.png", green: "/products/8gr.png" },
-  },
 ];
 
 const latestTransactions = [
@@ -157,43 +121,54 @@ const latestTransactions = [
 ];
 
 const CardList = ({ title }: { title: string }) => {
- 
   return (
     <div className="">
       <h1 className="text-lg font-medium mb-6">{title}</h1>
       <div className="flex flex-col gap-2">
-        {title==="Popular Products"? popularProducts.map((item) => (
-          <Card key={item.id} className="flex-row items-center justify-between gap-4 p-4">
-            <div className="w-12 h-12 rounded-sm relative overflow-hidden">
-              <Image
-                src={Object.values(item.images)[0]||""}
-                alt={item.name}
-                fill
-                className="object-cover"
-              />
-            </div>
-            <CardContent className="flex-1 p-0">
-              <CardTitle className="text-sm font-medium">{item.name}</CardTitle>
-            </CardContent>
-            <CardFooter className="p-0">{item.price}K</CardFooter>
-          </Card>
-        )) : latestTransactions.map((item) => (
-          <Card key={item.id} className="flex-row items-center justify-between gap-4 p-4">
-            <div className="w-12 h-12 rounded-full relative overflow-hidden">
-              <Image
-                src={item.image}
-                alt={item.title}
-                fill
-                className="object-cover"
-              />
-            </div>
-            <CardContent className="flex-1 p-0">
-              <CardTitle className="text-sm font-medium">{item.title}</CardTitle>
-              <Badge className="mt-1">{item.badge}</Badge>
-            </CardContent>
-            <CardFooter className="p-0">{item.count}K</CardFooter>
-          </Card>
-        ))}
+        {title === "Popular Products"
+          ? popularProducts.map((item) => (
+            <Card
+              key={item.id}
+              className="flex-row items-center justify-between gap-4 p-4"
+            >
+              <div className="w-12 h-12 rounded-sm relative overflow-hidden">
+                <Image
+                  src={Object.values(item.images)[0] || ""}
+                  alt={item.name}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <CardContent className="flex-1 p-0">
+                <CardTitle className="text-sm font-medium">
+                  {item.name}
+                </CardTitle>
+              </CardContent>
+              <CardFooter className="p-0">${item.price}K</CardFooter>
+            </Card>
+          ))
+          : latestTransactions.map((item) => (
+            <Card
+              key={item.id}
+              className="flex-row items-center justify-between gap-4 p-4"
+            >
+              <div className="w-12 h-12 rounded-sm relative overflow-hidden">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <CardContent className="flex-1 p-0">
+                <CardTitle className="text-sm font-medium">
+                  {item.title}
+                </CardTitle>
+                <Badge variant="secondary">{item.badge}</Badge>
+              </CardContent>
+              <CardFooter className="p-0">${item.count / 1000}K</CardFooter>
+            </Card>
+          ))}
       </div>
     </div>
   );
