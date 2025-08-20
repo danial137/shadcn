@@ -126,7 +126,7 @@ const EditUser = () => {
               <FormField
                 control={form.control}
                 name="fullName"
-                render={({ field }) => (
+                render={() => (
                   <FormItem>
                     <FormLabel>Role</FormLabel>
                     <FormControl>
