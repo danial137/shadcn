@@ -2,7 +2,7 @@ import { Payment,columns } from "./columns";
 import { DataTable } from "./data-table";
 
 const getData = async (): Promise<Payment[]> => {
-  return [
+  const items: Array<Omit<Payment, "userId">> = [
     {
       id: "728ed521",
       amount: 134,
@@ -256,6 +256,8 @@ const getData = async (): Promise<Payment[]> => {
       email: "annecruz@gmail.com",
     },
   ];
+
+  return items.map((p, i) => ({ userId: `user-${i + 1}`, ...p }));
 };
 
 const PaymentsPage = async () => {
