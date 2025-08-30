@@ -9,6 +9,7 @@ import {
   Plus,
   Projector,
   ChevronDown,
+  Shirt,
 } from "lucide-react";
 import {
   Sidebar,
@@ -41,6 +42,8 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "./ui/collapsible";
+import { Sheet, SheetTrigger } from "./ui/sheet";
+import EditUser from "./EditUser";
 
 const items = [
   {
@@ -108,25 +111,34 @@ const AppSidebar = () => {
           </SidebarGroupContent>
         </SidebarGroup>
         <SidebarGroup>
-          <SidebarGroupLabel>Projects</SidebarGroupLabel>
+          <SidebarGroupLabel>Product</SidebarGroupLabel>
           <SidebarGroupAction>
-            <Plus /> <span className="sr-only">Add Project</span>
+            <Plus /> <span className="sr-only">Add Product</span>
           </SidebarGroupAction>
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <Link href="/#">
-                    <Projector />
-                    See All Projects
-                  </Link>
+                  <Sheet>
+                    <SheetTrigger asChild>
+                      <SidebarMenuButton asChild>
+                        <Link href="/#">
+                          <Shirt />
+                          See All Product
+                        </Link>
+                     </SidebarMenuButton>
+                 
+                    </SheetTrigger>
+                    <EditUser/>
+                  </Sheet>
+                  
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
                   <Link href="/#">
                     <Plus />
-                    Add Project
+                    Add Product
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
